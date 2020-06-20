@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://www.dis.uniroma1.it/rosati/ltw-1819/soluzioniEserciziAJAX/esercizio4.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>AJAX: esercizio 4</title>
+  </head>
+  <body>
+    <span class="aa">Documento_1</span><br>
+    <span class="aa">Documento_2</span><br>
+    <span class="aa">Documento_3</span><br>
+    <span class="aa">Documento_4</span><br>
+    <br>
+    <span class="bb">Documento_5</span><br>
+    <span class="bb">Documento_6</span><br>
+    <span class="bb">Documento_7</span><br>
+    <span class="bb">Documento_8</span><br>
+    <hr>
+    <div id="zona_aa">
+
+  
+    <title>AJAX: Documento 4</title>
+  
+  
+    <h1>Documento 4</h1>
+    Questo è il documento 4
+  
+
+</div>
+    <hr>
+    <div id="zona_bb">
+
+  
+    <title>AJAX: Documento 8</title>
+  
+  
+    <h1>Documento 8</h1>
+    Questo è il documento 8
+  
+
+</div>
+    <hr>
+    Resto del documento<br>
+    ...
+    <script>
+      var documenti = document.getElementsByTagName("span");
+      for (var i = 0; i < documenti.length; i++) {
+        documenti[i].onmouseover = caricaDocumento;
+      }
+      function caricaDocumento(e) {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.prevTarget = e.target;
+        httpRequest.onreadystatechange = gestisciResponse;
+        httpRequest.open("GET", e.target.innerHTML + ".htm", true);
+        httpRequest.send();
+      }
+      function gestisciResponse(e) {
+        if (e.target.readyState == 4 && e.target.status == 200) {
+          document.getElementById("zona_"+e.target.prevTarget.getAttribute("class")).innerHTML
+          = e.target.responseText;
+        }
+      }
+    </script>
+  
+
+</body></html>

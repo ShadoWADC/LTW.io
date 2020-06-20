@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>AJAX: semplice title ></title>
+  </head>
+  <body>
+    <div>
+      <button>Documento_1</button>
+      <button>Documento_2</button>
+      <button>Documento_3</button>
+      <button>Documento_4</button>
+    </div>
+    <hr/>
+    <div id="zonaDinamica">
+      Seleziona il documento da visualizzare
+    </div>
+    <hr/>
+    Resto del documento<br/>
+    ...
+    <script>
+      var documenti = document.getElementsByTagName("button");
+      for ( var i = 0; i < documenti.length; i++){
+        documenti[i].onclick = caricaDocumento;
+      }
+
+      function caricaDocumento(e){
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = gestisciResponse;
+        httpRequest.open("GET", e.target.innerHTML+".htm", true);
+        httpRequest.send();
+      }
+
+      /* si noti l’uso della proprietà target degli eventi,
+      che restituisce l’elemento che ha causato l’evento */
+
+      function gestisciResponse(e){
+        if (e.target.readyState == XMLHttpRequest.DONE && e.target.status == 200){
+          document.getElementById("zonaDinamica").innerHTML = e.target.responseText;
+        }
+      }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://www.dis.uniroma1.it/rosati/ltw-1819/soluzioniEserciziAJAX/esercizio3.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>AJAX: esercizio 3</title>
+  </head>
+  <body>
+    <span id="dd">Documento_1</span><br>
+    <span id="ee">Documento_2</span><br>
+    <span id="ff">Documento_3</span><br>
+    <span id="gg">Documento_4</span><br>
+    <hr>
+    <div id="zonadd">
+      zona del documento 1
+    </div>
+    <hr>
+    <div id="zonaee">
+      zona del documento 2
+    </div>
+    <hr>
+    <div id="zonaff">
+      zona del documento 3
+    </div>
+    <hr>
+    <div id="zonagg">
+      zona del documento 4
+    </div>
+    <hr>
+    Resto del documento<br>
+    ...
+    <script>
+      var documenti = document.getElementsByTagName("span");
+      for (var i = 0; i < documenti.length; i++) {
+        documenti[i].onmouseover = caricaDocumento;
+      }
+      function caricaDocumento(e) {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.prevTarget = e.target;
+        httpRequest.onreadystatechange = gestisciResponse;
+        httpRequest.open("GET", e.target.innerHTML + ".htm", true);
+        httpRequest.send();
+      }
+      function gestisciResponse(e) {
+        if (e.target.readyState == 4 && e.target.status == 200) {
+          document.getElementById("zona"+e.target.prevTarget.getAttribute("id")).innerHTML
+          = e.target.responseText;
+        }
+      }
+    </script>
+  
+
+</body></html>

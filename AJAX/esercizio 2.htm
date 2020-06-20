@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://www.dis.uniroma1.it/rosati/ltw-1819/soluzioniEserciziAJAX/esercizio2.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>AJAX: esercizio 2</title>
+  </head>
+  <body>
+    <div id="dd">Documento_1</div>
+    <div id="ee">Documento_2</div>
+    <hr>
+    <div id="zonadd">
+      zona del documento 1
+    </div>
+    <hr>
+    <div id="zonaee">
+      zona del documento 2
+    </div>
+    <hr>
+    Resto del documento<br>
+    ...
+    <script>
+/*
+      var documenti = document.getElementsByTagName("div");
+      for (var i = 0; i < 4; i++) {
+        documenti[i].onmouseover = caricaDocumento;
+      }
+*/
+      document.getElementById("dd").onmouseover=caricaDocumento1;
+      document.getElementById("ee").onmouseover=caricaDocumento2;
+      function caricaDocumento1(e) {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = gestisciResponse1;
+        httpRequest.open("GET", e.target.innerHTML + ".htm", true);
+        httpRequest.send();
+      }
+      function caricaDocumento2(e) {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = gestisciResponse2;
+        httpRequest.open("GET", e.target.innerHTML + ".htm", true);
+        httpRequest.send();
+      }
+      function gestisciResponse1(e) {
+        if (e.target.readyState == XMLHttpRequest.DONE &&
+        e.target.status == 200) {
+          document.getElementById("zonadd").innerHTML
+          = e.target.responseText;
+        }
+      }
+      function gestisciResponse2(e) {
+        if (e.target.readyState == XMLHttpRequest.DONE &&
+        e.target.status == 200) {
+          document.getElementById("zonaee").innerHTML
+          = e.target.responseText;
+        }
+      }
+    </script>
+  
+
+</body></html>
