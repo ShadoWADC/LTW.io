@@ -37,7 +37,7 @@
 
       function gestisciResponse(e){
         if (e.target.readyState == XMLHttpRequest.DONE && e.target.status == 200){
-          if(e.target.innerHTML == document.getElementsByTagName("p")[0].innerHTML){
+          if(e.target.innerHTML === document.getElementsByTagName("p")[0].innerHTML){
             document.getElementById("zonaDinamica1").innerHTML = e.target.responseText;
           }
           else{
