@@ -1,0 +1,36 @@
+
+<!-- saved from url=(0076)http://www.dis.uniroma1.it/~rosati/ltw-1819/soluzioniEserciziJQuery/ese3.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+     
+    <title>JQuery: esercizio 3</title>
+  </head>
+  <body>
+    <script src="./ese3_files/jquery.min.js.download">
+    </script>
+    <div>
+      <button>Documento_1</button>
+      <button>Documento_2</button>
+      <button>Documento_3</button> 
+      <button>Documento_4</button>
+    </div>
+    <hr>
+    <div id="zonaDinamica">
+      Seleziona il documento da visualizzare
+    </div>
+    <hr>
+    Resto del documento<br>
+    ...
+    <script>
+      $(document).ready(function(){
+        $("button").click(function(){
+          $("#zonaDinamica").load(this.innerHTML+".htm", 
+            function(responseTxt, statusTxt, xhr){
+              if(statusTxt == "success") alert("Caricamento terminato");
+              if(statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
+            });
+        });
+      });
+    </script>
+  
+
+</body></html>
