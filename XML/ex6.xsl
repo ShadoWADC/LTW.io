@@ -30,7 +30,7 @@
                   </li>
               </xsl:for-each>
               Lista degli titoli e anni degli articoli:
-              <ul><tipoPub>
+              <ul>
                 <xsl:for-each select="voce[tipoPub='articolo']">
                     <li>
                       <xsl:for-each select="titolo">
