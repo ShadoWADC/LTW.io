@@ -29,19 +29,20 @@
                     </xsl:for-each>
                   </li>
               </xsl:for-each>
-              Lista degli titoli e anni degli articoli:
-              <ul>
-                <xsl:for-each select="voce[tipoPub='articolo']">
-                    <li>
-                      <xsl:for-each select="titolo">
-                        <xsl:value-of select="."/>
-                      </xsl:for-each>
-                      -
-                      <xsl:for-each select="titolo">
-                        <xsl:value-of select="."/>
-                      </xsl:for-each>
-                    </li>
-                </xsl:for-each>
+            </ul>
+            Lista degli titoli e anni degli articoli:
+            <ul>
+              <xsl:for-each select="voce[tipoPub='articolo']">
+                  <li>
+                    <xsl:for-each select="titolo">
+                      <xsl:value-of select="."/>
+                    </xsl:for-each>
+                    -
+                    <xsl:for-each select="titolo">
+                      <xsl:value-of select="."/>
+                    </xsl:for-each>
+                  </li>
+              </xsl:for-each>
             </ul>
 				</body>
 			</html>
