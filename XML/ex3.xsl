@@ -3,22 +3,33 @@
 	<xsl:template match="/*"> <!-- Matcha con l elemento radice  -->
 		<html>
 			<body>
-      <ol>
+        <ol>
           <li>
-				      <xsl:value-of select="text()"/>
+            contenuto testuale di <xsl:value-of select="name()"/>:
+            <ul>
+              <xsl:apply-templates select="text()"/>
+            </ul>
           </li>
           <xsl:apply-templates select="*"/>
-      </ol>
+        </ol>
 			</body>
 		</html>
 	</xsl:template>
+
   <xsl:template match="*">
-    <ul>
-      <li>
-        <xsl:element name="{text()}">
-        </xsl:element>
-        <xsl:apply-templates/>
-      </li>
-    </ul>
+    <li>
+      contenuto testuale di <xsl:value-of select="name()"/>:
+      <ul>
+        <xsl:apply-templates select="text()"/>
+      </ul>
+    </li>
+    <xsl:apply-templates select="*"/>
+  </xsl:template>
+
+  <xsl:template match="text()">
+    <li>
+      <xsl:copy/>
+    </li>
   </xsl:template>
 </xsl:stylesheet>
+
