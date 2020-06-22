@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="ex1.xsl" type="text/xsl"?>
+<doc>
+	testo di doc
+	<a>
+		<b>testo 1 di b
+      <d>testo 2 di b</d>
+    </b>
+		<b>testo 3 di b</b>
+	</a>
+	altro testo di doc
+	<a>
+		<b>testo 4 di b</b>
+		<b>testo 5 di b</b>
+		<b>testo 6 di b</b>
+	</a>
+	<c>elemento c</c>
+</doc>
