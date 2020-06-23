@@ -5,7 +5,9 @@
         <body>
           <xsl:template match="t">
             <xsl:element name="table">
-             
+              <xsl:attribute name="border">
+                <xsl:value-of select="@b"/>
+              </xsl:attribute>
               <xsl:for-each select="r">
                 <tr>
                   <xsl:for-each select="cel">
@@ -13,11 +15,13 @@
                   </xsl:for-each>
                 </tr>
               </xsl:for-each>
-              <xsl:apply-templates select="*"/>
             </xsl:element>
           </xsl:template>
         </body>
      </html>
+     <xsl:apply-templates select="*"/>
   </xsl:template>
+
   <xsl:template match="text()"/>
+
 </xsl:stylesheet>
