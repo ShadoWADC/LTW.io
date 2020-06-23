@@ -5,9 +5,7 @@
         <body>
           <xsl:template match="t">
             <xsl:element name="table">
-              <xsl:attribute name="border">
-                <xsl:value-of select="@b"/>
-              </xsl:attribute>
+             
               <xsl:for-each select="r">
                 <tr>
                   <xsl:for-each select="cel">
