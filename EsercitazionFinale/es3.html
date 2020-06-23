@@ -13,9 +13,8 @@
 
       function gestisciResponse(e) {
         if (e.target.readyState == 4 && e.target.status == 200) {
-          var c = parseInt(e.target.innerHTML.charAt(3));
-          if(c<=4) c="1";
-          else c="2";
+          var c=e.target.prevTarget.value.charAt(3);
+          if (c<="4") c="1"; else c="2";
           document.getElementById("zona"+c).innerHTML = e.target.responseText;
         }
       }
