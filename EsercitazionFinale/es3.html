@@ -1,25 +1,5 @@
 <html>
-  <head>
-    <script>
-      document.getElementsByTagName("select")[0].onchange=caricaDocumento;
-
-      function caricaDocumento(e){
-        var httpRequest = new XMLHttpRequest();
-        httpRequest.prevTarget = e.target;
-        httpRequest.onreadystatechange = gestisciResponse;
-        httpRequest.open("GET", e.target.innerHTML+".htm", true);
-        httpRequest.send();
-      }
-
-      function gestisciResponse(e) {
-        if (e.target.readyState == 4 && e.target.status == 200) {
-          var c=e.target.prevTarget.value.charAt(3);
-          if (c<="4") c="1"; else c="2";
-          document.getElementById("zona"+c).innerHTML = e.target.responseText;
-        }
-      }
-    </script>
-  </head>
+  <head></head>
   <body>
     inizio documento
 
@@ -43,6 +23,24 @@
     </div>
     <hr/>
     fine documento
+    <script>
+      document.getElementsByTagName("select")[0].onchange=caricaDocumento;
 
+      function caricaDocumento(e){
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.prevTarget = e.target;
+        httpRequest.onreadystatechange = gestisciResponse;
+        httpRequest.open("GET", e.target.innerHTML+".htm", true);
+        httpRequest.send();
+      }
+
+      function gestisciResponse(e) {
+        if (e.target.readyState == 4 && e.target.status == 200) {
+          var c=e.target.prevTarget.value.charAt(3);
+          if (c<="4") c="1"; else c="2";
+          document.getElementById("zona"+c).innerHTML = e.target.responseText;
+        }
+      }
+    </script>
   </body>
 </html>
