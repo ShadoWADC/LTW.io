@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="es6.xsl" type="text/xsl"?>
+<bibliografia>
+  <voce>
+    <autori>
+      <autore>Anna Bianchi</autore>
+      <autore>Mario Rossi</autore>
+      <autore>Gianni Verdi</autore>
+    </autori>
+    <titolo>Titolo 1</titolo>
+    <date>
+      <anno>2019</anno>
+      <mese>10</mese>
+      <giorno>1</giorno>
+    <date>
+    <tipoPub>Libro</tipoPub>
+  </voce>
+  <voce>
+    <autori>
+      <autore>Paola Gialli</autore>
+      <autore>Gianni Verdi</autore>
+    </autori>
+    <titolo>Titolo 2</titolo>
+    <date>
+      <anno>2020</anno>
+      <mese>2</mese>
+      <giorno>15</giorno>
+    <date>
+    <tipoPub>Articolo</tipoPub>
+  </voce>
+  <voce>
+    <autori>
+      <autore>Mario Rossi</autore>
+      <autore>Maria Neri</autore>
+    </autori>
+    <titolo>Titolo 3</titolo>
+    <date>
+      <anno>2018</anno>
+      <mese>1</mese>
+      <giorno>31</giorno>
+    <date>
+    <tipoPub>Libro</tipoPub>
+  </voce>
+
+</bibliografia>

@@ -1,0 +1,99 @@
+<html>
+<head>
+  <meta charset="ISO-8859-1"/>
+  <script>
+    function inizializzaStorageUtenti(){
+      if(typeof(localStorage.utenti) == "undefined"){
+        localStorage.utenti="[]";
+      }
+    }
+
+    function resetStorageUtenti(){
+      localStorage.utenti="[]";
+    }
+
+    function stampaStorage(){
+      var utenti = JSON.parse(localStorage.utenti);
+      var lunghezza = utenti.length;
+      var output = new String("<h3>Stato di localStorage</h3>");
+      output+="<table border=1><tr><th>Nome</th><th>Cognome</th><th>Matricola</th></tr>";
+      for(i=0;i<lunghezza;i++){
+        output += "<tr class="+utenti[i].sesso+"><td>" + utenti[i].nome + "</td><td>" + utenti[i].cognome + "</td><td>" + utenti[i].matricola + "</td></tr>";
+      }
+      output+="</table>";
+      document.getElementById("OUTPUT").innerHTML = output;
+    }
+
+    function uguali(u,o){
+      if ((u.cognome == o.cognome) && (u.nome == o.nome) && (u.matricola == o.matricola) && (u.sesso == o.sesso))
+      		return true;
+      	return false;
+    }
+
+    function inserisciUtente(){
+        if (document.es2.nome.value == "") {
+          alert("Inserire nome");
+          return false;
+        }
+        if (document.es2.cognome.value == "") {
+      		alert("Inserire cognome");
+      		return false;
+      	}
+      	if (document.es2.matricola.value == "") {
+      		alert("Inserire matricola");
+      		return false;
+      	}
+
+        var utenti = JSON.parse(localStorage.utenti);
+        var lunghezza = utenti.length;
+        var nuovoUtente = {
+          nome: document.es2.nome.value,
+          cognome: document.es2.cognome.value,
+          matricola: document.es2.matricola.value,
+          sesso: document.es2.sesso.value
+        };
+
+        for(i=0;i<lunghezza;i++){
+          if(uguali(utenti[i],nuovoUtente)){
+            alert("Utente gia inserito");
+      			return false;
+          }
+        }
+
+        alert("Dati inseriti correttamente");
+        utenti[lunghezza]=nuovoUtente;
+        localStorage.utenti = JSON.stringify(utenti);
+        return true;
+    }
+  </script>
+  <style>
+    tr.M {color:blue; font-family: "Courier New";}
+    tr.F {color:red; font-family: Arial;}
+  </style>
+</head>
+<body onload="inizializzaStorageUtenti()">
+  <form action="" method="post" name="es2" onsubmit="return inserisciUtente();">
+    Matricola:<input type="text" name="matricola" size=12 maxlength="12"><br>
+    Nome:<input type="text" name="nome" size=60 maxlength="60"><br>
+    Cognome:<input type="text" name="cognome" size=60 maxlength="60"><br>
+    Data di Nascita:<input type="date" name="date"><br>
+    Sesso:
+    <select name="sesso" id="sesso">
+      <option value="F">F</option>
+      <option value="M">M</option>
+    </select><br>
+    Corso Frequentato:
+    <select name="corso">
+        <option value="nessuno" selected></option>
+        <option value="IT" >IT</option>
+        <option value="ECON" >ECON</option>
+        <option value="MATH" >MATH</option>
+    </select>
+    <input type="submit" value="Invia">
+    <input type="reset" value="Reset">
+    <input type="button" value="Stampa" onClick="stampaStorage();">
+    <input type="button" value="Reset Storage" onClick="resetStorageUtenti();">
+  </form>
+  <div id="OUTPUT"></div>
+</body>
+</html>

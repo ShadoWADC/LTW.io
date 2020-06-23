@@ -1,0 +1,79 @@
+<html>
+<head>
+  <script type="text/javascript" language="javascript">
+  function controllaCognome() {
+    if (document.ES1.cognome.value=="") {
+      alert("Inserire cognome");
+      return false;
+    }
+    return true;
+  }
+  function controllaNome() {
+    if (document.ES1.nome.value=="") {
+      alert("Inserire nome");
+      return false;
+    }
+    return true;
+  }
+
+  function validaAnnoCorso(){
+    if (document.registr.anno.value!="FC") {
+      if (isNaN(document.registr.anno.value)||document.registr.anno.value=="") {
+        alert("Anno di corso errato");
+        return false;
+      }
+      else {
+        var v=parseInt(document.registr.anno.value);
+
+        if ((v<1)||(v>6)) {
+          alert("Anno di corso errato");
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  function verifica(){
+    var residenza = document.ES1.residenza.value;
+    if (residenza=="nessuno"){
+      alert("Inserisci la residenza e invia nuovamente");
+  		return false;
+    }
+    if(document.ES1.email.value==""){
+      alert("Inserisci l'email");
+  		return false;
+    }
+    if(document.ES1.telefono.value==""){
+      alert("Inserisci il telefono");
+  		return false;
+    }
+    return true
+
+  }
+  </script>
+</head>
+<body>
+  <form action="" method="POST" name="ES1" onsubmit="verifica();">
+    Nome <input type="text" name="nome" size=40 maxlength="40" onChange="return controllaNome();"><br>
+    Cognome <input type="text" name="cognome" size=40 maxlength="40" onChange="return controllaCognome();"><br>
+    Sesso:
+    <input type="radio" name="sesso" value="M" onclick="sesso=this.value;">M
+    <input type="radio" name="sesso" value="F" onclick="sesso=this.value;">F<br>
+    Matricola <input type="text" name="nome" size=12 maxlength="12"><br>
+    Regione di residenza:
+    <select name="residenza">
+      <option value="nessuno" selected></option>
+      <option value="Lazio">Lazio</option>
+      <option value="Lombardia">Lombardia</option>
+      <option value="Campania">Campania</option>
+    </select><br>
+    Email <input type="text" name="email" size=30 maxlength="30"><br>
+    Telefono <input type="text" name="telefono" size=15 maxlength="15"><br>
+    Anno Di Corso <input type="text" name="anno_corso" size=2 maxlength="2" onChange="return validaAnnoCorso();"><br>
+    Richieste Particolari:<br>
+    <textarea cols="60" rows="12" name="richieste"></textarea><br>
+    <input type="submit" value="Invia">
+    <input type="reset" value="Reset">
+  </form>
+</body>
+</html>
