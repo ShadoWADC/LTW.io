@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="es6.xsl" type="text/xsl"?>
+<a>
+  <t b="2">
+    testo 0
+    <r>
+      <com>testo 1</com>
+      <cel>testo 2</cel>
+      <cel>testo 3</cel>
+      testo 4
+    </r>
+    <cel>testo 5</cel>
+    <r>
+      testo 6
+      <cel>testo 7</cel>
+      <cel>testo 8</cel>
+    </r>
+  </t>
+</a>

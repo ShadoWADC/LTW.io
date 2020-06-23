@@ -1,0 +1,85 @@
+<html>
+<head>
+  <meta charset="ISO-8859-1"/>
+  <script>
+    function inizializzaStorageCarrello(){
+      if(typeof(localStorage.carrello) == "undefined"){
+        localStorage.carrello="[]";
+      }
+    }
+
+    function resetStorageCarrello(){
+      localStorage.carrello="[]";
+    }
+
+    function stampaStorage(){
+      var carrello = JSON.parse(localStorage.carrello);
+      var lunghezza = carrello.length;
+      var output1 = new String("<h3>Tabella prezzo > 20</h3>");
+      output1+="<table border=1><tr><th>Codice</th><th>Quantita</th><th>Prezzo</th></tr>";
+      var output2 = new String("<h3>Tabella prezzo <= 20</h3>");
+      output2+="<table border=1><tr><th>Codice</th><th>Quantita</th><th>Prezzo</th></tr>";
+      for(i=0;i<lunghezza;i++){
+        if(carrello[i].prezzo>20) output1 += "<a href='http://www.abc.com/"+carrello[i].codice+"'<tr class="+carrello[i].codice+"><a><td>"+carrello[i].codice+"</td><td>" + carrello[i].quantita + "</td><td>" + carrello[i].prezzo + "</td></tr>";
+        else output2 += "<a href='http://www.abc.com/"+carrello[i].codice+"'<tr class="+carrello[i].codice+"><a><td>"+carrello[i].codice+"</td><td>" + carrello[i].quantita + "</td><td>" + carrello[i].prezzo + "</td></tr>";
+      }
+      output1+="</table>";
+      output2+="</table>";
+      document.getElementById("OUTPUT").innerHTML = output1+"<br>"+output2;
+    }
+
+    function uguali(u,o){
+      if ((u.codice == o.codice) && (u.prezzo == o.prezzo))
+      		return true;
+      	return false;
+    }
+
+    function inserisciCarrello(){
+        if (document.es2.codice.value == "") {
+          alert("Inserire codice");
+          return false;
+        }
+        if (document.es2.quantita.value == "") {
+      		alert("Inserire quantita");
+      		return false;
+      	}
+      	if (document.es2.prezzo.value == "") {
+      		alert("Inserire prezzo");
+      		return false;
+      	}
+
+        var carrello = JSON.parse(localStorage.carrello);
+        var lunghezza = carrello.length;
+        var nuovoCarrello = {
+          codice: document.es2.codice.value,
+          quantita: document.es2.quantita.value,
+          prezzo: document.es2.prezzo.value
+        };
+
+        for(i=0;i<lunghezza;i++){
+          if(uguali(carrello[i],nuovoCarrello)){
+            carrello[i].quantita+=nuovoCarrello.quantita;
+            alert("Dati Aggiornati");
+          }
+        }
+
+        alert("Dati inseriti correttamente");
+        carrello[lunghezza]=nuovoCarrello;
+        localStorage.carrello = JSON.stringify(carrello);
+        return true;
+    }
+  </script>
+</head>
+<body onload="inizializzaStorageCarrello()">
+  <form action="" method="post" name="es2" onsubmit="return inserisciCarrello();">
+    Codice:<input type="text" name="codice" size=12 maxlength="12"><br>
+    Quantita:<input type="text" name="quantita" size=60 maxlength="60"><br>
+    Prezzo:<input type="text" name="prezzo" size=60 maxlength="60"><br>
+    <input type="submit" value="Invia">
+    <input type="reset" value="Reset">
+    <input type="button" value="Stampa" onClick="stampaStorage();">
+    <input type="button" value="Reset Storage" onClick="resetStorageCarrello();">
+  </form>
+  <div id="OUTPUT"></div>
+</body>
+</html>
