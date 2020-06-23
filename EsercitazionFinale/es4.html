@@ -1,19 +1,5 @@
 <html>
-  <head>
-    <script>
-    $(document).ready(function(){
-      $("select").change(function(){
-          var c=this.value.charAt(3);
-          if (c<="4") c="1"; else c="2";
-          $("#zona"+c).load(this.value+".htm",
-          function(responseTxt, statusTxt, xhr){
-            //if(statusTxt == "success") alert("Caricamento terminato");
-            if(statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
-          });
-      });
-    });
-    </script>
-  </head>
+  <head></head>
   <body>
     inizio documento
 
@@ -37,6 +23,18 @@
     </div>
     <hr/>
     fine documento
-
+    <script>
+    $(document).ready(function(){
+      $("select").change(function(){
+          var c=this.value.charAt(3);
+          if (c<="4") c="1"; else c="2";
+          $("#zona"+c).load(this.value+".htm",
+          function(responseTxt, statusTxt, xhr){
+            //if(statusTxt == "success") alert("Caricamento terminato");
+            if(statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
+          });
+      });
+    });
+    </script>
   </body>
 </html>
